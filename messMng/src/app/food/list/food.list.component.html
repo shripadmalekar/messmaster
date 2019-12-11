@@ -1,0 +1,31 @@
+<h1>Food List</h1>
+
+<button (click)="onAddFood()" class="btn btn-primary pull-right add-category">Add Food</button>
+
+<h4 *ngIf="fooditems.length == 0">There are no Food. Please use the button Add Food Iteams to add one.</h4>
+
+<table *ngIf="fooditems.length > 0" class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Food No</th>
+      <th>Food Name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fooditem of fooditems; let index = index">
+      <td>{{fooditem.foodid}}</td>
+      <td>{{fooditem.foodname}}</td>
+      <td>{{fooditem.foodprice}}</td>
+      <td>
+          <button (click)="onDelete(fooditem.foodid)" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+          <button (click)="onUpdate()" class="btn btn-warning" style="margin-left: 10px;">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

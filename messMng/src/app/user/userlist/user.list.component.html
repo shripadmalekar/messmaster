@@ -1,0 +1,33 @@
+<h1>User's List</h1>
+
+<button routerLink="/user-registration" class="btn btn-primary pull-right add-category">Add User</button>
+<!-- fooditems.length -->
+<h4 *ngIf="users.length == 0">There are no user's. Please use the button Add User to add one.</h4>
+
+<table *ngIf="users.length > 0" class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>User Name</th>
+      <th>Email ID</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let index = index">
+      <td>{{user.userid}}</td>
+      <td>{{user.nusername}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.address}}</td>
+      <td>
+          <button (click)="onDelete(user.userid)" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+          <button (click)="onUpdate()" class="btn btn-warning" style="margin-left: 10px;">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
