@@ -2,30 +2,30 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class FoodService {
+export class MenuService {
 
-  url = 'http://localhost:5000/food'
+  url = 'http://localhost:5000/menu'
 
   constructor(private http: HttpClient) {
   }
 
-  getfood() {
+  getmenu() {
     return this.http.get(this.url)
   }
 
-  getMenuByCategory(categoryid:number) {
-    return this.http.get(this.url+'/'+categoryid)
-  }
-
-  add(foodname:string,foodprice:number,categoryid:number) {
+  
+  
+  add(messid:number,menudate:Date,foodname:string,menuprice:number) {
     const body = {
       foodname: foodname,
-      foodprice: foodprice,
-      categoryid:categoryid
+      messid:messid,
+      menuprice:menuprice,
+      menudate:menudate
 
     }
+    // console.log(body)
 
-    return this.http.post(this.url, body)
+    return this.http.post(this.url+ '/' + messid, body)
   }
 
   deleteFood(fid: number) {

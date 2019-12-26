@@ -13,8 +13,8 @@ router.get('/',(request,response)=>{
 })
 
 router.post('/:messid',(request,response)=>{
-    const {menudate,foodname,menuprice}=request.body
-    const {messid} = request.params
+    const {messid,menudate,foodname,menuprice}=request.body
+    // const {messid} = request.params
     const connection =db.connect()
     const statement =`insert into menu(messid,menudate,foodname,menuprice)values('${messid}','${menudate}','${foodname}',${menuprice})`
     connection.query(statement,(error,data)=>{

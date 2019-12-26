@@ -14,6 +14,20 @@ router.get('/',(request,response)=>{
     
     
   })
+
+  router.get('/:categoryid',(request,response)=>{
+    const {categoryid} = request.params
+    const connection =db.connect()
+    //const statement=`select * from fooditeams``
+    const statement=`select * from fooditeams where categoryid = ${categoryid} `
+    connection.query(statement,(error,data)=>{
+        connection.end()
+        response.send(utils.createResult(error,data))
+    })
+    
+    
+  })
+
   router.delete('/:foodid', (request, response) => {
     const {foodid} = request.params
     const connection = db.connect()

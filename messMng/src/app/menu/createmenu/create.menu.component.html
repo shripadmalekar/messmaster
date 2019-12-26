@@ -1,0 +1,58 @@
+<h1>Create Your Menu </h1>
+
+<div class ="row"> 
+     <div class ="col-md-4"></div> 
+     <div class="col-md-4"> 
+        <div class="login">
+            <div class="from">
+                <div class="form-group">
+                    <label for="">Select Catagory</label> 
+                    <select [(ngModel)]="categoryid"  class="form-control" (change)="changeCatagory($event)">
+                        <option
+                        *ngFor="let Catagory of catagories"
+                        [value]="Catagory.categoryid">{{Catagory.categoryname}}</option>
+                    </select>   
+                </div>
+                <div class="form-group">
+                    <label for="">Select Menu Date</label>
+                    <input [(ngModel)]="menudate" type="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Select Food</label> 
+                    
+                    <div *ngFor="let Fooditem of fooditeams">
+                        <input class="form-check-input"
+                         type ="checkbox"  
+                         name ="tagOptions"
+                         (change)="changeCheckbox($event,Fooditem.foodprice)"
+                         [checked]="Fooditem.checked"
+                         [value]="Fooditem.foodname">{{Fooditem.foodname}}--{{Fooditem.foodprice}}<br>
+                         
+                    </div>
+                     
+                    
+                </div>
+                <div class="form-group">
+                        <table *ngIf="checkedfoods.length > 0" class="table table-striped table-bordered">
+                                <thead>
+                                  <tr>
+                                    <!-- <th>Mess name</th> -->
+                                    <th>Food Items</th>
+                              </tr>
+                                </thead>
+                                <tbody>
+                                        <tr *ngFor="let checkedfood of checkedfoods">
+                                          <td>{{checkedfood}}</td>
+                                          </tr>
+                                          <tr>
+                                             <th>Total {{menuprice}}</th> 
+                                          </tr>
+                                      </tbody>
+                        </table>
+                </div>    
+                                <div class="form-group">
+                                    <button (click)="oncreate()" class="btn btn-success">Create</button>
+                                    <a routerLink="/user-login" class="btn btn-danger pull-right">Cancel</a>
+            </div>
+         </div>
+    </div>

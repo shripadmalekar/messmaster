@@ -14,14 +14,30 @@ import { FoodListComponent } from './food/list/food.list.component';
 import { adminlogin } from './admin/login/login.component';
 import { UserListComponent } from './user/userlist/use.list.component';
 import { FoodAddComponent } from './food/add/food.add.component';
+import { OrderService } from './order/order.service';
+import { OrdersListComponent } from './order/allordersrlist/orders.list.component';
+import { MessOrdersListComponent } from './order/messorderlist/messorder.list.component';
+import { UserOrderedListComponent } from './order/userorder/userordered.list.component';
+import { CategoryService } from './category/category.service';
+import { CategoryListComponent } from './category/list/category.list.component';
+import { CreateMenuComponent } from './menu/createmenu/create.menu.component';
+import { MenuService } from './menu/menu.service';
+
+
+
 const routes:Route[]=[
   {path:'',component:adminlogin},
   {path:'food-list',component:FoodListComponent},
   {path:'user-registration',component:UserRegistrationComponent},
   {path:'user-login',component:UserLoginComponent},
   {path:'user-list',component:UserListComponent},
-  {path:'food-add',component:FoodAddComponent}
-
+  {path:'food-add',component:FoodAddComponent},
+  {path:'orders-list',component:OrdersListComponent},
+  {path:'messorder-list',component:MessOrdersListComponent},
+  {path:'userordered-list',component:UserOrderedListComponent},
+  {path:'category-list',component:CategoryListComponent},
+  {path:'create-menu',component:CreateMenuComponent}
+  
 ]
 
 @NgModule({
@@ -33,8 +49,14 @@ const routes:Route[]=[
     FoodListComponent,
     adminlogin,
     UserListComponent,
-    FoodAddComponent
- ],
+    FoodAddComponent,
+    OrdersListComponent,
+    MessOrdersListComponent,
+    UserOrderedListComponent,
+    CategoryListComponent,
+    CreateMenuComponent
+
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -44,7 +66,10 @@ const routes:Route[]=[
   ],
   providers: [
     UserService,
-    FoodService
+    FoodService,
+    OrderService,
+    CategoryService,
+    MenuService
   ],
   bootstrap: [AppComponent]
 })
