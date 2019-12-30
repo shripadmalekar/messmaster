@@ -22,6 +22,7 @@ import { CategoryService } from './category/category.service';
 import { CategoryListComponent } from './category/list/category.list.component';
 import { CreateMenuComponent } from './menu/createmenu/create.menu.component';
 import { MenuService } from './menu/menu.service';
+import { CategoryAddComponent } from './category/addcatagory/category.add.component';
 
 
 
@@ -36,7 +37,8 @@ const routes:Route[]=[
   {path:'messorder-list',component:MessOrdersListComponent},
   {path:'userordered-list',component:UserOrderedListComponent},
   {path:'category-list',component:CategoryListComponent},
-  {path:'create-menu',component:CreateMenuComponent}
+  {path:'create-menu',component:CreateMenuComponent},
+  {path:'app-addcategory',component:CategoryAddComponent}
   
 ]
 
@@ -54,7 +56,8 @@ const routes:Route[]=[
     MessOrdersListComponent,
     UserOrderedListComponent,
     CategoryListComponent,
-    CreateMenuComponent
+    CreateMenuComponent,
+    CategoryAddComponent
 
    ],
   imports: [

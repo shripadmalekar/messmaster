@@ -13,19 +13,18 @@ export class CategoryService {
     return this.http.get(this.url)
   }
 
-  // add(foodname:string,foodprice:number,categoryid:number) {
-  //   const body = {
-  //     foodname: foodname,
-  //     foodprice: foodprice,
-  //     categoryid:categoryid
+  add(categoryname:string) {
+    const body = {
+      categoryname: categoryname
+    }
 
-  //   }
-
-  //   return this.http.post(this.url, body)
-  // }
+    return this.http.post(this.url, body)
+  }
 
   deleteFood(categoryid: number) {
+    console.log(categoryid)
     return this.http.delete(this.url + '/' + categoryid)
+    
   }
   
  }

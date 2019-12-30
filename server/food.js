@@ -44,6 +44,7 @@ router.post('/', (request, response) => {
   const {foodname,foodprice,categoryid} = request.body
 
   const connection = db.connect()
+  // console.log(foodname + foodprice + categoryid)
   //const statement = `insert into fooditeams (fid,foodname, price) values ('${fid}', '${foodname}','${price}')`
   const statement = `insert into fooditeams (foodname,foodprice,categoryid) values ( '${foodname}','${foodprice}','${categoryid}')`
   connection.query(statement, (error, data) => {
