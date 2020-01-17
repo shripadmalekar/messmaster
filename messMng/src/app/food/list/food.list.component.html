@@ -9,20 +9,22 @@
     <tr>
       <th>Food No</th>
       <th>Food Name</th>
+      <th>Catagory Name</th>
       <th>Price</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let fooditem of fooditems; let index = index">
-      <td>{{fooditem.foodid}}</td>
+      <td>{{index+1}}</td>
       <td>{{fooditem.foodname}}</td>
+      <td>{{fooditem.categoryname}}</td>
       <td>{{fooditem.foodprice}}</td>
-      <td>
+     <td>
           <button (click)="onDelete(fooditem.foodid)" class="btn btn-danger">
             <i class="glyphicon glyphicon-trash"></i>
           </button>
-          <button (click)="onUpdate()" class="btn btn-warning" style="margin-left: 10px;">
+          <button (click)="onUpdateFood(fooditem.foodname,fooditem.categoryid,fooditem.foodprice)" class="btn btn-warning" style="margin-left: 10px;">
             <i class="glyphicon glyphicon-pencil"></i>
           </button>
       </td>

@@ -28,8 +28,9 @@ export class FoodService {
     return this.http.post(this.url, body)
   }
 
-  deleteFood(fid: number) {
-    return this.http.delete(this.url + '/' + fid)
+  deleteFood(foodid: number) {
+    console.log(foodid)
+    return this.http.delete(this.url + '/' + foodid)
   }
   
  }

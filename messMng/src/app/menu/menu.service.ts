@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {DatePipe} from '@angular/common';
 
 @Injectable()
 export class MenuService {
-
+  
+  
   url = 'http://localhost:5000/menu'
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { 
+     
   }
 
   getmenu() {
     return this.http.get(this.url)
+  }
+  
+  todaymenus(){
+    return this.http.get(this.url+'/todaymenu/current')
   }
 
   

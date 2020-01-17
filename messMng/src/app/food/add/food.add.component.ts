@@ -3,6 +3,7 @@ import { FoodService } from '../food.service';
 import { CategoryService } from '../../category/category.service';
 import { Router } from '@angular/router';
 import * as toastr from 'toastr'
+import {FormBuilder,FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'food-add',
@@ -14,13 +15,21 @@ export class FoodAddComponent implements OnInit {
     foodprice:number
     categoryid:number
     catagories=[]
+    foodform=FormGroup
 
 
 
 
   constructor(
     private categoryservice :  CategoryService,
-    private foodService: FoodService) {
+    private foodService: FoodService,
+    private fb:FormBuilder,
+    private router :Router) {
+
+this.foodname =sessionStorage['foodname']
+this.foodprice =sessionStorage['foodprice']
+
+
       this.categoryservice
       .getCategory().subscribe( response => {
           
@@ -37,6 +46,10 @@ export class FoodAddComponent implements OnInit {
 
     
   }
+  onCancel()
+  {this.router.navigate(['/food-list'])
+
+  }
 
 
 
@@ -47,6 +60,7 @@ export class FoodAddComponent implements OnInit {
         console.log(response['status'])
         if (response['status'] == 'success') {
             toastr.success(response['status'])
+            this.router.navigate(['/food-list'])
         } else {
           toastr.error(response['status'])
         }
@@ -54,6 +68,9 @@ export class FoodAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.foodform= this.fb.group({
+      
+    //})
       }
 
 }

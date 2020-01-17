@@ -9,7 +9,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 //login
   login(nusername: string, userpassword: string) {
-    console.log('nusername'+name)
+    console.log('nusername'+nusername)
     console.log('userpassword'+userpassword)
             const body = {
               nusername: nusername,

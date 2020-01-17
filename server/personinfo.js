@@ -29,23 +29,24 @@ router.delete('/:userid', (request, response) => {
 
 router.post('/login',(request,response)=>{
   const{nusername,userpassword}=request.body
+  // console.log('hi')
   const connection=db.connect()
-  const person=[]
+  
   const statement=`select * from user where nusername='${nusername}' and userpassword='${userpassword}'`
   connection.query(statement,(error,person)=>{
     connection.end()
-    console.log(person)
+    // console.log(person)
 
     // const person=[]
     if(person.length==0){
-      response.send(utils.createResult('Invalid UserName or Password '))
+      response.send(utils.createResult('Invalid input '))
     }
     else{
       const personinfo=person[0]
       const info={
          name:personinfo['nusername'],
-        //email:personinfo[email],
-         password:personinfo['userpassword']
+         roll:personinfo['roll'],
+         userid:personinfo['userid']
       }
       response.send(utils.createResult(null,info))
     }
@@ -54,9 +55,9 @@ router.post('/login',(request,response)=>{
 })
 
 router.post('/registration',(request,response)=>{
-    const {nusername,email,address,messid,userpassword}=request.body
+    const {nusername,email,address,messid,userpassword,roll}=request.body
     const connection =db.connect()
-    const statement =`insert into user(nusername,email,address,messid,userpassword)values('${nusername}','${email}','${address}',${messid},'${userpassword}')`
+    const statement =`insert into user(nusername,email,address,messid,userpassword,roll)values('${nusername}','${email}','${address}',${messid},'${userpassword}','${roll}')`
     connection.query(statement,(error,data)=>{
       connection.end()
     response.send(utils.createResult(error,data))

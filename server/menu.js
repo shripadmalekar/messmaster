@@ -32,7 +32,15 @@ router.get('/:messid',(request,response)=>{
         response.send(utils.createResult(error,data))
     })
 })
-
+router.get('/todaymenu/current',(request,response)=>{
+  
+    const connection =db.connect()
+     const statement=`select ms.messname,m.messid,m.menuid,m.foodname,m.menuprice,m.menudate from menu m inner join mess ms on m.messid=ms.messid where m.menudate= CURRENT_DATE()`
+    connection.query(statement,(error,data)=>{
+        connection.end()
+        response.send(utils.createResult(error,data))
+    })
+})
 router.put('/:menuid',(request,response)=>{
     const {menuid} = request.params
     const {foodname,menuprice}=request.body

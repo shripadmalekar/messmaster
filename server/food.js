@@ -5,8 +5,9 @@ const router =express.Router()
 
 router.get('/',(request,response)=>{
     const connection =db.connect()
-    //const statement=`select * from fooditeams``
-    const statement=`select * from fooditeams`
+    
+    // const statement=`select * from fooditeams`
+    const statement=`select foodid,foodname,foodprice,categoryname,c.categoryid from fooditeams f inner join category c on f.categoryid=c.categoryid`
     connection.query(statement,(error,data)=>{
         connection.end()
         response.send(utils.createResult(error,data))

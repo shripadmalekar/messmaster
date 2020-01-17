@@ -23,23 +23,33 @@ export class FoodListComponent implements OnInit {
       .subscribe(response => {
         if (response['status'] == 'success') {
           this.fooditems = response['data']
+          console.log(this.fooditems)
         }
       })
   }
+  onUpdateFood(foodname:string,categoryid:number,foodprice:number) {
+    console.log(foodprice)
+    sessionStorage['foodname']=foodname
+    sessionStorage['categoryid']=categoryid
+    sessionStorage['foodprice']=foodprice
+    this.router.navigate(['/food-add'])
+  }
+  onAddFood()
+  {
+    this.router.navigate(['/food-add'])
+  }
 
-//   onAddCategory() {
-//     this.router.navigate(['/category-add'])
-//   }
-
-//   ngOnInit() {
- // }
 
   onDelete(id: number) {
+    console.log('delete call',id)
+
     this.foodService
       .deleteFood(id)
       .subscribe(response => {
         if (response['status'] == 'success') {
+          
           this.loadFood()
+
         } else {
           console.log(response['error'])
         }

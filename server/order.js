@@ -6,7 +6,7 @@ const router =express.Router()
 router.get('/',(request,response)=>{
     const connection =db.connect()
     
-    const statement=`select o.orederid,u.nusername,m.foodname,m.menuprice,m.menudate,me.messname from orders o 
+    const statement=`select o.orederid,m.menuid,m.messid,u.nusername,m.foodname,m.menuprice,m.menudate,me.messname from orders o 
     inner join user u on o.userid=u.userid
     inner join menu m on o.menuid=m.menuid
     inner join mess me on o.messid=me.messid`
@@ -14,6 +14,16 @@ router.get('/',(request,response)=>{
         connection.end()
         response.send(utils.createResult(error,data))
     })
+    router.post('/',(request,response)=>{
+        const {messid,menuid,userid}=request.body
+        
+        const connection =db.connect()
+        const statement =`insert into orders(orderdate,menuid,messid,userid)values( current_date(),'${messid}','${menuid}','${userid}')`
+        connection.query(statement,(error,data)=>{
+          connection.end()
+        response.send(utils.createResult(error,data))
+        })
+      })
     
     
   })

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user/login/user.login.component';
 import { UserService } from './user/user.service';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import{RouterModule,Route} from'@angular/router'
 import { UserRegistrationComponent } from './user/registration/user.registration.component';
 import { AdminDashboard } from './admin/admindashboard/admindashboard.component';
@@ -23,6 +23,9 @@ import { CategoryListComponent } from './category/list/category.list.component';
 import { CreateMenuComponent } from './menu/createmenu/create.menu.component';
 import { MenuService } from './menu/menu.service';
 import { CategoryAddComponent } from './category/addcatagory/category.add.component';
+import { TodayMenuListComponent } from './menu/Todasysmenu/today.menulist.component';
+import { DatePipe } from '@angular/common';
+// import { MapMenuComponent } from './menu/map/map.menu.component';
 
 
 
@@ -38,7 +41,10 @@ const routes:Route[]=[
   {path:'userordered-list',component:UserOrderedListComponent},
   {path:'category-list',component:CategoryListComponent},
   {path:'create-menu',component:CreateMenuComponent},
-  {path:'app-addcategory',component:CategoryAddComponent}
+  {path:'app-addcategory',component:CategoryAddComponent},
+  {path:'todaymenu-list',component:TodayMenuListComponent}
+  // {path:'mess-map',component:MapMenuComponent}
+  
   
 ]
 
@@ -57,13 +63,16 @@ const routes:Route[]=[
     UserOrderedListComponent,
     CategoryListComponent,
     CreateMenuComponent,
-    CategoryAddComponent
+    CategoryAddComponent,
+    TodayMenuListComponent
+    // MapMenuComponent
 
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
 
     RouterModule.forRoot(routes)
   ],
@@ -72,7 +81,8 @@ const routes:Route[]=[
     FoodService,
     OrderService,
     CategoryService,
-    MenuService
+    MenuService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
