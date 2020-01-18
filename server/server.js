@@ -5,6 +5,7 @@ const userrouter=require('./personinfo')
 const foodrouter=require('./food')
 const menurouter=require('./menu')
 const orderrouter=require('./order')
+const messrouter=require('./mess')
 const categoryrouter=require('./category')
 
 const app = express()
@@ -22,6 +23,7 @@ app.use('/food',foodrouter)
 app.use('/menu',menurouter)
 app.use('/order',orderrouter)
 app.use('/category',categoryrouter)
+app.use('/mess',messrouter)
 
 app.listen(5000,'0.0.0.0',()=>{
     console.log('server started on port 5000')

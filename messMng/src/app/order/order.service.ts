@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { post } from 'selenium-webdriver/http';
 
 @Injectable()
 export class OrderService {
@@ -7,6 +8,14 @@ export class OrderService {
   url = 'http://localhost:5000/order'
 
   constructor(private http: HttpClient) {
+  }
+  placeorder(messid:number,menuid:number,userid:number){
+    const body ={
+      messid :messid,
+      menuid:menuid,
+      userid:userid
+    }
+    return this.http.post(this.url+'/',body)
   }
 
   getorder() {

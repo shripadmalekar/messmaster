@@ -25,6 +25,8 @@ import { MenuService } from './menu/menu.service';
 import { CategoryAddComponent } from './category/addcatagory/category.add.component';
 import { TodayMenuListComponent } from './menu/Todasysmenu/today.menulist.component';
 import { DatePipe } from '@angular/common';
+import { MessListComponent } from './mess/messlist/mess.list.component';
+import { MessService } from './mess/mess.service';
 // import { MapMenuComponent } from './menu/map/map.menu.component';
 
 
@@ -42,7 +44,8 @@ const routes:Route[]=[
   {path:'category-list',component:CategoryListComponent},
   {path:'create-menu',component:CreateMenuComponent},
   {path:'app-addcategory',component:CategoryAddComponent},
-  {path:'todaymenu-list',component:TodayMenuListComponent}
+  {path:'todaymenu-list',component:TodayMenuListComponent},
+  {path:'mess-list',component:MessListComponent}
   // {path:'mess-map',component:MapMenuComponent}
   
   
@@ -64,7 +67,9 @@ const routes:Route[]=[
     CategoryListComponent,
     CreateMenuComponent,
     CategoryAddComponent,
-    TodayMenuListComponent
+    TodayMenuListComponent,
+    MessListComponent,
+    
     // MapMenuComponent
 
    ],
@@ -82,7 +87,8 @@ const routes:Route[]=[
     OrderService,
     CategoryService,
     MenuService,
-    DatePipe
+    DatePipe,
+    MessService
   ],
   bootstrap: [AppComponent]
 })
