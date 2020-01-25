@@ -1,0 +1,45 @@
+<h1>Registration</h1>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="login">
+            <div class="from">
+                <div class="form-group">
+                    <label for="">Mess Name</label>
+                    <input [(ngModel)]="messname" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Owner Name</label>
+                    <input [(ngModel)]="messowner" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <input [(ngModel)]="messaddress" type="address" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Contact Number</label>
+                    <input [(ngModel)]="messcontact" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input [(ngModel)]="email" type="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input [(ngModel)]="messpassword" type="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Longitude</label>
+                    <input [(ngModel)]="longitude" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Latitude</label>
+                    <input [(ngModel)]="latitude" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button (click)="onregistration()" class="btn btn-success">Register</button>
+                    <a routerLink="/user-login" class="btn btn-danger pull-right">Cancel</a>
+                </div>
+            </div>
+        </div>

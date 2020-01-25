@@ -11,6 +11,19 @@ router.get('/',(request,response)=>{
         connection.end()
         response.send(utils.createResult(error,data))
     })
+
+    // router.get('/map',(request,response)=>{
+    //   const connection =db.connect()
+      
+    //   const statement=`select * from mess`
+    //   connection.query(statement,(error,data)=>{
+    //       connection.end()
+    //       response.send(utils.createResult(error,data))
+    //   })
+      
+      
+    })
+
     router.post('/',(request,response)=>{
         const {messid,menuid,userid}=request.body
         
@@ -23,7 +36,7 @@ router.get('/',(request,response)=>{
       })
     
     
-  })
+
 
 //   router.get('/byuserid/:userid',(request,response)=>{
 //     const {userid} = request.params

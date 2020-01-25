@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import * as toastr from 'toastr';
 @Component({
-    selector: 'userregistration',
+    selector: 'user-registration',
     templateUrl: './user.registration.component.html',
     styleUrls:['./user.registration.component.css']
 })

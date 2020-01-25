@@ -27,25 +27,30 @@ import { TodayMenuListComponent } from './menu/Todasysmenu/today.menulist.compon
 import { DatePipe } from '@angular/common';
 import { MessListComponent } from './mess/messlist/mess.list.component';
 import { MessService } from './mess/mess.service';
+import { AdminRegistrationComponent } from './admin/registration/admin.registration.component';
+import { AdminService } from './admin/admin.service';
 // import { MapMenuComponent } from './menu/map/map.menu.component';
 
 
 
 const routes:Route[]=[
-  {path:'',component:adminlogin},
-  {path:'food-list',component:FoodListComponent},
-  {path:'user-registration',component:UserRegistrationComponent},
   {path:'user-login',component:UserLoginComponent},
-  {path:'user-list',component:UserListComponent},
-  {path:'food-add',component:FoodAddComponent},
-  {path:'orders-list',component:OrdersListComponent},
-  {path:'messorder-list',component:MessOrdersListComponent},
-  {path:'userordered-list',component:UserOrderedListComponent},
-  {path:'category-list',component:CategoryListComponent},
-  {path:'create-menu',component:CreateMenuComponent},
-  {path:'app-addcategory',component:CategoryAddComponent},
-  {path:'todaymenu-list',component:TodayMenuListComponent},
-  {path:'mess-list',component:MessListComponent}
+  {path:'admin-login',component:adminlogin},
+  {path:'food-list',component:FoodListComponent,canActivate: [AdminService]},
+  {path:'user-registration',component:UserRegistrationComponent},
+  {path:'admin-registration',component:AdminRegistrationComponent},
+  {path:'user-login',component:UserLoginComponent},
+  {path:'user-list',component:UserListComponent,canActivate: [AdminService]},
+  {path:'food-add',component:FoodAddComponent,canActivate: [AdminService]},
+  {path:'orders-list',component:OrdersListComponent,canActivate: [AdminService]},
+  {path:'messorder-list',component:MessOrdersListComponent,canActivate: [AdminService]},
+  {path:'userordered-list',component:UserOrderedListComponent,canActivate: [UserService]},
+  {path:'category-list',component:CategoryListComponent,canActivate: [AdminService]},
+  {path:'create-menu',component:CreateMenuComponent,canActivate: [AdminService]},
+  {path:'app-addcategory',component:CategoryAddComponent,canActivate: [AdminService]},
+  {path:'todaymenu-list',component:TodayMenuListComponent,canActivate: [UserService]},
+  {path:'todaymenu-list',component:TodayMenuListComponent,canActivate: [AdminService]},
+  {path:'mess-list',component:MessListComponent,canActivate: [UserService]}
   // {path:'mess-map',component:MapMenuComponent}
   
   
@@ -69,7 +74,7 @@ const routes:Route[]=[
     CategoryAddComponent,
     TodayMenuListComponent,
     MessListComponent,
-    
+    AdminRegistrationComponent
     // MapMenuComponent
 
    ],
@@ -88,7 +93,8 @@ const routes:Route[]=[
     CategoryService,
     MenuService,
     DatePipe,
-    MessService
+    MessService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

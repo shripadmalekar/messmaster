@@ -11,6 +11,7 @@ export class MessOrdersListComponent implements OnInit {
 
   orders: any[] = []
   messid  =2
+   messid1  = sessionStorage["userid"]
 
   constructor(
     private router: Router,
@@ -19,6 +20,7 @@ export class MessOrdersListComponent implements OnInit {
   }
 
   loadOrders() {
+    console.log(this.messid1)
     this.orderService
       .messorder(this.messid)
       .subscribe(response => {

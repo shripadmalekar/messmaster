@@ -28,11 +28,11 @@ router.delete('/:userid', (request, response) => {
 })
 
 router.post('/login',(request,response)=>{
-  const{nusername,userpassword}=request.body
-  // console.log('hi')
+  const{email,userpassword}=request.body
+   console.log('hi')
   const connection=db.connect()
   
-  const statement=`select * from user where nusername='${nusername}' and userpassword='${userpassword}'`
+  const statement=`select * from user where email='${email}' and userpassword='${userpassword}'`
   connection.query(statement,(error,person)=>{
     connection.end()
     // console.log(person)
@@ -44,9 +44,11 @@ router.post('/login',(request,response)=>{
     else{
       const personinfo=person[0]
       const info={
-         name:personinfo['nusername'],
-         roll:personinfo['roll'],
-         userid:personinfo['userid']
+        userid:personinfo['userid'],
+        nusername:personinfo['nusername'],
+        messid:personinfo['messid'],
+         role:personinfo['role']
+         
       }
       response.send(utils.createResult(null,info))
     }

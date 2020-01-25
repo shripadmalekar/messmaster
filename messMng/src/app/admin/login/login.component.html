@@ -1,31 +1,5 @@
-<!-- <h1>Login</h1>
-    <div class="row">
-        <div class ="col_md_4"></div>
-        <div class="col_md-4">
-            <div class="Login">
-
-             <div class="form">
-                <div class="form-group">
-                    <lable for="">Email</lable>
-                    <input [(ngModel)]="email" type="email" class="from-control">
-                </div>
-                <div class="form-group">
-                        <lable for="">Password</lable>
-                        <input [(ngModel)]="password" type="password" class="from-control">
-                </div>
-                <div class="form-group">
-                        <button (click)="onLogin()" class="btn btn-success">Login</button>
-                        <a class="btn btn-warning pull-right" routerLink="/user-register">Register</a>
-                      </div>
-            </div>
-            </div>
-        </div>
-    </div class="col-md-4"></div>  
-</div>  -->
-
-<h1>Login</h1>
-
-
+<img src="./assets/logo1.png" class="center">
+<h1>Admin Login</h1>
 <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-4">
@@ -34,21 +8,19 @@
       <div class="form">
         <div class="form-group">
           <label for="">Email</label>
-          <input [(ngModel)]="name" type="text" class="form-control">
+          <input [(ngModel)]="email" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label for="">Pasword</label>
-          <input [(ngModel)]="password" type="password" class="form-control">
+          <input [(ngModel)]="messpassword" type="password" class="form-control">
         </div>
 
         <div class="form-group">
           <button (click)="onLogin()" class="btn btn-success">Login</button>
-          <a class="btn btn-warning pull-right" routerLink="/user-registration">Register</a>
+          <a class="btn btn-warning pull-right" routerLink="/admin-registration">Register</a>
         </div>
       </div>
     </div>
   </div>
   <div class="col-md-4"></div>
 </div>
-
-

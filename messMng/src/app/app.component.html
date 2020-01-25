@@ -1,10 +1,46 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" *ngIf="isDefault()">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Admin</a>
+      
+    <div class="navbar-header">        
+        <a href="#"><img src="./assets/logo.png" height="42" width="42" ></a>
+        <!-- <a class="navbar-brand" href="#">Home</a> -->
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      
+      </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Select User Type <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/admin-login">Admin</a></li>
+              <li><a href="/user-login">User</a></li>
+              <li><a href="/admin-login">Owner</a></li>
+            </ul>
+          </li>
+          <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Registration Type <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/user-registration">user's Registration</a></li>
+              <!-- <li><a href="/owner-list">Mess Registration</a></li>              -->
+            </ul>
+          </li>
+        </ul>
+  </div>
+</nav>
+
+
+
+<nav class="navbar navbar-inverse" *ngIf="isadmin()">
+  <div class="container-fluid">
+      
+    <div class="navbar-header">        
+        <a href="#"><img src="./assets/logo.png" height="42" width="42" ></a>        
+    </div>
+    <ul class="nav navbar-nav">      
       <li><a href="/userordered-list">user order's</a></li>
       <li><a href="/messorder-list">mess order's</a></li>
       <li><a href="/orders-list">all order's</a></li>
@@ -16,20 +52,63 @@
       <li><a href="/todaymenu-list">today's menu's</a></li>
       <li><a href="/user-list">user's</a></li>
       <li><a href="/mess-list">mess list</a></li>
-         </ul>
+
+    </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a routerLink="user-registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a routerLink="user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a><span class="glyphicon glyphicon-user"></span> Welcome Admin {{username}}</a></li>
+
+      <li><a (click)="onOwnerLogout()"><span class="glyphicon glyphicon-log-out"></span> logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-inverse" *ngIf="isuser()">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a href="#"><img src="./assets/logo.png" height="42" width="42" ></a>   
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/userordered-list">user order's</a></li>
+      <li><a href="/todaymenu-list">today's menu's</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a><span class="glyphicon glyphicon-user"></span> Welcome {{username}}</a></li>
+
+      <li><a (click)="onLogout()"><span class="glyphicon glyphicon-log-out"></span> logout</a></li>
+    </ul>
+  </div>
+</nav>
+<nav class="navbar navbar-inverse" *ngIf="isowner()">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a href="#"><img src="./assets/logo.png" height="42" width="42" ></a>   
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/userordered-list">user order's</a></li>
+      <li><a href="/messorder-list">mess order's</a></li>
+      <li><a href="/category-list">category</a></li>
+      <li><a href="/app-addcategory"> add new_category </a></li>
+      <li><a href="/food-list">food list</a></li>
+      <li><a href="/food-add">add food </a></li>
+      <li><a href="/create-menu">create today's menu</a></li>
+      <li><a href="/todaymenu-list">today's menu's</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a><span class="glyphicon glyphicon-user"></span> Welcome {{username}}</a></li>
+      <li><a (click)="onLogout()"><span class="glyphicon glyphicon-log-out"></span> logout</a></li>
     </ul>
   </div>
 </nav>
 
 
-
-<div >
-<div class="row">
-  <div class="col-md-12">
-    <router-outlet></router-outlet>
+<div>
+  <div class="row">
+      <!-- <img src="./assets/logo.png" class="center" > -->
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
 </div>

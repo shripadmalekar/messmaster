@@ -1,5 +1,5 @@
 const db = require('./db')
-const util = require('./utils')
+const utils = require('./utils')
 const express = require('express')
 const crypt = require('crypto-js')
 
@@ -26,40 +26,44 @@ const crypt = require('crypto-js')
               
      })
  })
+ 
+router.post('/registration',(request,response)=>{
+  
+  const connection =db.connect()
+  const {messname,email,messaddress,messpassword,messowner,messcontact,longitude,latitude,role}=request.body
+  const statement =`insert into mess(messname,email,messaddress,messowner,messcontact,messpassword,longitude,latitude,role)values('${messname}','${email}','${messaddress}','${messowner}','${messcontact}','${messpassword}','${longitude}','${latitude}','${role}')`
+  connection.query(statement,(error,data)=>{
+    connection.end()
+  response.send(utils.createResult(error,data))
+  })
+})
+
  router.post('/login',(request,response)=>{
-   const{username,password}=request.body
-   const connection =db.connect()
-   const statement =`select * from admin where username='${username}'and password='${password}'`
-   connection.query(statement,(error,users)=>{
-     connection.end()
-     if (users.length ==0)
-     {
-       console.log('user  dont exists')
-     }else{
-       console.log('logined')
-     }
-     response.send('good')
-   })
- })
-// router.post('/login', (request, response) => {
-//   const {username, password} = request.body
-//   const encryptedPassword = '' + crypt.MD5(password)
-//   const connection = db.connect()
-//   const statement = `select * from admin where username = '${username}' and password = '${password}'`
-//   connection.query(statement, (error, users) => {
-//       connection.end()
-      
-//       if (users.length == 0) {
-//           response.send(util.createResult('user does not exist'))
-//       } else {
-//           const user = users[0]
-//           const info = {
-//               username: user['username'],
-//               email: user['email']
-//           }
-//           response.send(util.createResult(null, info))
-//       }
-//   })
-// })
+  const{email,messpassword}=request.body
+   console.log('hi')
+  const connection=db.connect()
+  
+  const statement=`select * from mess where email='${email}' and messpassword='${messpassword}'`
+  connection.query(statement,(error,owner)=>{
+    connection.end()
+    // console.log(owner)
+
+    // const owner=[]
+    if(owner.length==0){
+      response.send(utils.createResult('Invalid input '))
+    }
+    else{
+      const ownerinfo=owner[0]
+      const info={
+        messid:ownerinfo['messid'],
+        messname:ownerinfo['messname'],
+        role:ownerinfo['role']
+         
+      }
+      response.send(utils.createResult(null,info))
+    }
+
+  })
+})
 
 module.exports=router

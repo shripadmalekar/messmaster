@@ -1,39 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import * as toastr from 'toastr'
-import { UserService } from 'src/app/user/user.service';
+import { AdminService } from 'src/app/admin/admin.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-admin-login',
+    selector: 'admin-login',
     templateUrl: './login.component.html',
     styleUrls:['./login.component.css']
 })
 
 export class adminlogin implements OnInit {
-    name :""
-    password :""
+    email :""
+    messpassword :""
 
-    constructor(private userService:UserService,
+    constructor(private adminService:AdminService,
         private router:Router) { }
 
     ngOnInit() { }
     onLogin(){
-        if(this.name.length == 0){
-            toastr.error('enter  name')
-        }else if(this.password.length ==0)
-        {
-            toastr.error('enter password')
-        }else {
-            this.userService
-            .login(this.name,this.password)
-            .subscribe(response =>{
-                if(response['status'] == 'success'){
-                    toastr.success('authenticated member')
-                    this.router.navigate(['/todaymenu-list'])
-                }else{
-                    toastr.error(response['error'])
-                }
-            })
-        }
+        this.adminService
+        .login(this.email,this.messpassword)
+        .subscribe(response =>{
+            if(response['status'] == 'success'){
+                toastr.success('authenticated')
+                sessionStorage["login_status"] = '1'
+
+                sessionStorage["messid"] = response['data']['messid']
+                sessionStorage["messname"] = response['data']['messname']
+                sessionStorage["role"] = response['data']['role']
+                // this.router.navigate(['/todaymenu-list'])
+            }else{
+                toastr.error(response['error'])
+            }
+        })
     }
 }

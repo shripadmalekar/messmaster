@@ -14,6 +14,7 @@ router.get('/',(request,response)=>{
     
     
   })
+
   router.delete('/:categoryid', (request, response) => {
     const {categoryid} = request.params
     const connection = db.connect()

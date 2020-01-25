@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as toastr from 'toastr'
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-admin-login',
+    selector: 'user-login',
     templateUrl: './user.login.component.html',
     styleUrls:['./user.login.component.css']
 })
@@ -12,7 +13,8 @@ export class UserLoginComponent implements OnInit {
     nusername :""
     userpassword :""
 
-    constructor(private userService:UserService) { }
+    constructor(private userService:UserService,
+        private router:Router) { }
 
     ngOnInit() { }
     onLogin(){
@@ -21,6 +23,13 @@ export class UserLoginComponent implements OnInit {
             .subscribe(response =>{
                 if(response['status'] == 'success'){
                     toastr.success('authenticated')
+                    sessionStorage["login_status"] = '1'
+
+                    sessionStorage["userid"] = response['data']['userid']
+                    sessionStorage["nusername"] = response['data']['nusername']
+                   // sessionStorage["messid"] = response['data']['messid']
+                    sessionStorage["role"] = response['data']['role']
+                    this.router.navigate(['/todaymenu-list'])
                 }else{
                     toastr.error(response['error'])
                 }
