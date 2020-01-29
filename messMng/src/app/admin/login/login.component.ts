@@ -23,12 +23,12 @@ export class adminlogin implements OnInit {
         .subscribe(response =>{
             if(response['status'] == 'success'){
                 toastr.success('authenticated')
-                sessionStorage["login_status"] = '1'
+                sessionStorage["login_status"] = 1
 
                 sessionStorage["messid"] = response['data']['messid']
                 sessionStorage["messname"] = response['data']['messname']
                 sessionStorage["role"] = response['data']['role']
-                // this.router.navigate(['/todaymenu-list'])
+                 this.router.navigate(['/todaymenu-list'])
             }else{
                 toastr.error(response['error'])
             }

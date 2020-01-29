@@ -34,6 +34,7 @@ import { AdminService } from './admin/admin.service';
 
 
 const routes:Route[]=[
+  {path:'',component:AdminDashboard},
   {path:'user-login',component:UserLoginComponent},
   {path:'admin-login',component:adminlogin},
   {path:'food-list',component:FoodListComponent,canActivate: [AdminService]},
@@ -48,8 +49,8 @@ const routes:Route[]=[
   {path:'category-list',component:CategoryListComponent,canActivate: [AdminService]},
   {path:'create-menu',component:CreateMenuComponent,canActivate: [AdminService]},
   {path:'app-addcategory',component:CategoryAddComponent,canActivate: [AdminService]},
-  {path:'todaymenu-list',component:TodayMenuListComponent,canActivate: [UserService]},
-  {path:'todaymenu-list',component:TodayMenuListComponent,canActivate: [AdminService]},
+  {path:'todaymenu-list',component:TodayMenuListComponent,},
+
   {path:'mess-list',component:MessListComponent,canActivate: [UserService]}
   // {path:'mess-map',component:MapMenuComponent}
   
@@ -74,7 +75,8 @@ const routes:Route[]=[
     CategoryAddComponent,
     TodayMenuListComponent,
     MessListComponent,
-    AdminRegistrationComponent
+    AdminRegistrationComponent,
+    AdminDashboard
     // MapMenuComponent
 
    ],

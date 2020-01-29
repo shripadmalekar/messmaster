@@ -23,7 +23,7 @@ export class AdminService implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     // check if user is already logged in
     // if (sessionStorage['login_status'] == '1') {
-    if (localStorage['login_status'] == '1') {
+    if (sessionStorage['login_status'] == 1) {
       return true
     }
 

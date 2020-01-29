@@ -10,11 +10,11 @@ export class UserService implements CanActivate {
   constructor(private http: HttpClient,
     private router: Router) { }
 //login
-  login(nusername: string, userpassword: string) {
-    console.log('nusername'+nusername)
+  login(email: string, userpassword: string) {
+    console.log('email'+email)
     console.log('userpassword'+userpassword)
             const body = {
-              nusername: nusername,
+              email: email,
               userpassword: userpassword
     }
 
@@ -24,7 +24,7 @@ export class UserService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     // check if user is already logged in
     // if (sessionStorage['login_status'] == '1') {
-    if (localStorage['login_status'] == '1') {
+    if (sessionStorage['login_status'] == '1') {
       return true
     }
 
@@ -34,20 +34,20 @@ export class UserService implements CanActivate {
   }
   
   //register
-  registerUser(name: string, email: string,address :string, password: string ,messid:number) {
+  registerUser(name: string, email: string,address :string, password: string  ) {
     console.log('name'+name)
     console.log('email'+email)
     console.log('pass'+password)
     console.log('add'+address)
-    console.log('mesid'+messid)
+    
     const body = {
                      nusername: name,
                      email: email,
                      userpassword: password,
                      address:address,
-                     messid:messid
+                     role:"user"
                   }
-
+ console.log(body)
     return this.http.post(this.url + '/registration', body)
   }
   //get users

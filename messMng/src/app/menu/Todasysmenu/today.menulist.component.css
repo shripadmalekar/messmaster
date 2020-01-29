@@ -15,4 +15,15 @@ h1{
     margin: 10px;
     cursor: pointer;
   }
+  h1{
+    color: #DDFDFF;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+  background-color: #D8E3F0;
   
+}
+.header{
+    background-color: #043164;
+    color : #D8E3F0;}

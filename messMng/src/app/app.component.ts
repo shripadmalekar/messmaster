@@ -57,7 +57,7 @@ export class AppComponent {
     sessionStorage.removeItem('userid')
     sessionStorage.removeItem('role')
     sessionStorage.removeItem('nusername')
-    this.router.navigate(['/user-login'])
+    this.router.navigate(['/'])
   }
 
   onOwnerLogout(){
@@ -68,6 +68,6 @@ export class AppComponent {
     sessionStorage.removeItem('userid')
     sessionStorage.removeItem('role')
     sessionStorage.removeItem('nusername')
-    this.router.navigate(['/admin-login'])
+    this.router.navigate(['/'])
   }
 }

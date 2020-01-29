@@ -22,6 +22,15 @@ export class TodayMenuListComponent implements OnInit {
     private orderservice:OrderService) {
       this.loadMenus()
   }
+  isadmin(){
+    if(sessionStorage['role']=='user'){
+      return false
+    }else{
+
+      
+      return true
+    }
+  }
   onplaceorder(menuid:number,messid:number)
 
   {

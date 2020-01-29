@@ -37,15 +37,15 @@ export class UserRegistrationComponent implements OnInit {
         // }
         // else{
             this.userservice
-            .registerUser(this.name,this.email,this.address,this.password,this.messid)
+            .registerUser(this.name,this.email,this.address,this.password)
             .subscribe(response =>{
                 console.log(response['status'])
                 if(response['status'] == 'success'){
                     toastr.success('registered')
-                    //this.router.navigate(['/user-login'])
+                    this.router.navigate(['/user-login'])
                 }else{
                     toastr.error(response['error'])
-
+                    console.log(response['error'])
                 }
             })
         }

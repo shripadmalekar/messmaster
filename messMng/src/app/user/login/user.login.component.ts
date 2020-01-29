@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 
 export class UserLoginComponent implements OnInit {
-    nusername :""
+    email :""
     userpassword :""
 
     constructor(private userService:UserService,
@@ -19,11 +19,11 @@ export class UserLoginComponent implements OnInit {
     ngOnInit() { }
     onLogin(){
             this.userService
-            .login(this.nusername,this.userpassword)
+            .login(this.email,this.userpassword)
             .subscribe(response =>{
                 if(response['status'] == 'success'){
                     toastr.success('authenticated')
-                    sessionStorage["login_status"] = '1'
+                    sessionStorage["login_status"] = 1
 
                     sessionStorage["userid"] = response['data']['userid']
                     sessionStorage["nusername"] = response['data']['nusername']

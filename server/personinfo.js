@@ -29,14 +29,14 @@ router.delete('/:userid', (request, response) => {
 
 router.post('/login',(request,response)=>{
   const{email,userpassword}=request.body
-   console.log('hi')
+   console.log('hello')
   const connection=db.connect()
   
   const statement=`select * from user where email='${email}' and userpassword='${userpassword}'`
   connection.query(statement,(error,person)=>{
     connection.end()
     // console.log(person)
-
+     console.log(request.body)
     // const person=[]
     if(person.length==0){
       response.send(utils.createResult('Invalid input '))
@@ -57,9 +57,9 @@ router.post('/login',(request,response)=>{
 })
 
 router.post('/registration',(request,response)=>{
-    const {nusername,email,address,messid,userpassword,roll}=request.body
+    const {nusername,email,address,userpassword,role}=request.body
     const connection =db.connect()
-    const statement =`insert into user(nusername,email,address,messid,userpassword,roll)values('${nusername}','${email}','${address}',${messid},'${userpassword}','${roll}')`
+    const statement =`insert into user(nusername,email,address,userpassword,role)values('${nusername}','${email}','${address}','${userpassword}','${role}')`
     connection.query(statement,(error,data)=>{
       connection.end()
     response.send(utils.createResult(error,data))

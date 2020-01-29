@@ -1,6 +1,7 @@
 h1
 {
     text-align:center ;
+    color: #DDFDFF;
 }
 .center {
     display: block;
@@ -9,3 +10,8 @@ h1
     width: 200px;
     height: 200px;
   }
+ 
+
+label{
+  color: #DDFDFF; 
+}
