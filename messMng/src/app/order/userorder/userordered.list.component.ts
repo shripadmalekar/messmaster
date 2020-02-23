@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class UserOrderedListComponent implements OnInit {
 
   orders: any[] = []
-  userid  =2
+  userid  = sessionStorage['userid']
 
   constructor(
     private router: Router,
@@ -20,7 +20,7 @@ export class UserOrderedListComponent implements OnInit {
 
   loadOrders() {
     this.orderService
-      .messorder(this.userid)
+      .userorder(this.userid)
       .subscribe(response => {
         if (response['status'] == 'success') {
           this.orders = response['data']

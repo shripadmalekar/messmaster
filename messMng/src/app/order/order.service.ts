@@ -15,7 +15,7 @@ export class OrderService {
       menuid:menuid,
       userid:userid
     }
-    return this.http.post(this.url+'/',body)
+    return this.http.post(this.url,body)
   }
 
   getorder() {
@@ -34,6 +34,7 @@ export class OrderService {
   // }
 
   messorder(messid: number) {
+    
     return this.http.get(this.url + '/' + messid)
   }
   userorder(userid: number) {

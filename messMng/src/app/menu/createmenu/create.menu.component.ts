@@ -38,6 +38,7 @@ export class CreateMenuComponent implements OnInit {
                 if(response['status']=='success'){
                     this.catagories = response['data']
                     this.catagoryid= this.catagories[0].id
+                    
                 }else{
                     console.log(response['error'])
                 }
@@ -118,6 +119,7 @@ export class CreateMenuComponent implements OnInit {
                if(response['status'] == 'success'){
                    toastr.success('registered')
                    //this.router.navigate(['/user-login'])
+                   this.router.navigate(['/todaymenu-list'])
                }else{
                    console.log(response['data'])
                    toastr.error(response['error'])

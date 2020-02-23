@@ -7,11 +7,13 @@ public class Mess {
     String messowner;
     String messcontact;
     String mespassword;
+    double longitude;
+    double latitude;
 
     public Mess() {
     }
 
-    public Mess(int messid, String messname, String messaddress, String messowner, String messcontact, String mespassword, String longitude, String latitude, String role) {
+    public Mess(int messid, String messname, String messaddress, String messowner, String messcontact, String mespassword, double longitude, double latitude, String role) {
         this.messid = messid;
         this.messname = messname;
         this.messaddress = messaddress;
@@ -23,8 +25,7 @@ public class Mess {
         this.role = role;
     }
 
-    String longitude;
-    String latitude;
+
     String role;
 
     public int getMessid() {
@@ -75,19 +76,19 @@ public class Mess {
         this.mespassword = mespassword;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 

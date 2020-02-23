@@ -13,7 +13,7 @@ export class TodayMenuListComponent implements OnInit {
   menus= []
   menuid: number
   messid: number
-  userid =1
+  userid =sessionStorage['userid']
   
 
   constructor(
@@ -23,7 +23,7 @@ export class TodayMenuListComponent implements OnInit {
       this.loadMenus()
   }
   isadmin(){
-    if(sessionStorage['role']=='user'){
+    if(sessionStorage['role']=='admin'){
       return false
     }else{
 
@@ -34,13 +34,26 @@ export class TodayMenuListComponent implements OnInit {
   onplaceorder(menuid:number,messid:number)
 
   {
-    console.log(messid +''+menuid)
+    console.log(messid +' hey'+menuid)
     this.orderservice
     .placeorder(menuid,messid,this.userid)
     .subscribe( response => {
       if(response['status']=='success'){
+        console.log(sessionStorage['role'])
+        if(sessionStorage['role']=="admin")
+        {
+          console.log("admin")
+          this.router.navigate["/orders-list"]
+        }else if(sessionStorage['role']=="owner")
+        {
+          console.log("owner")
+          this.router.navigate["/messorder-list"]
+        }else if(sessionStorage['role']=="user"){
+          console.log("user")
+          this.router.navigate["/userordered-list"]
+        }
         toastr.success('order placed')
-        
+
       }else{
           console.log(response['error'])
       }

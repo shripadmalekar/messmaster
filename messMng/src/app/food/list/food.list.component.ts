@@ -16,7 +16,15 @@ export class FoodListComponent implements OnInit {
     private foodService: FoodService) {
       this.loadFood()
   }
+  isadmin(){
+    if(sessionStorage['role']=='admin'){
+      return false
+    }else{
 
+      
+      return true
+    }
+  }
   loadFood() {
     this.foodService
       .getfood()

@@ -3,6 +3,7 @@ package shripad.cadacproject.findyourmeal.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import shripad.cadacproject.findyourmeal.MapsActivity;
 import shripad.cadacproject.findyourmeal.R;
 import shripad.cadacproject.findyourmeal.utils.Constants;
 import shripad.cadacproject.findyourmeal.utils.Utils;
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onCompleted(Exception e, JsonObject result) {
                             String status = result.get("status").getAsString();
                             if (status.equals("success")) {
-                                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
                                 startActivity(intent);
                                 finish();
                             } else {

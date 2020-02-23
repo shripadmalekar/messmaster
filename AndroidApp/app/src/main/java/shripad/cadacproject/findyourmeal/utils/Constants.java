@@ -1,7 +1,7 @@
 package shripad.cadacproject.findyourmeal.utils;
 
 public class Constants {
-    public static final String BASE_URL = "http://172.18.4.196:5000";
+    public static final String BASE_URL = "http://192.168.0.116:5000";
 
 //    public static final String PATH_ORDER = "/order";
     public static final String PATH_PERSONINFO = "/personinfo";

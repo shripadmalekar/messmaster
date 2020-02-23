@@ -19,6 +19,7 @@ router.get('/',(request,response)=>{
         
         const connection =db.connect()
         const statement =`insert into orders(orderdate,menuid,messid,userid)values( current_date(),'${messid}','${menuid}','${userid}')`
+        console.log(statement)
         connection.query(statement,(error,data)=>{
           connection.end()
         response.send(utils.createResult(error,data))
@@ -35,6 +36,7 @@ router.get('/',(request,response)=>{
      inner join user u on o.userid=u.userid
      inner join menu m on o.menuid=m.menuid
      inner join mess me on o.messid=me.messid where u.userid='${userid}'`
+     console.log(statement)
     connection.query(statement,(error,data)=>{
         connection.end()
         response.send(utils.createResult(error,data))

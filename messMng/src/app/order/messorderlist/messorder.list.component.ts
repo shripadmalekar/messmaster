@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class MessOrdersListComponent implements OnInit {
 
   orders: any[] = []
-  messid  =2
+  messid  = sessionStorage['messid']
    messid1  = sessionStorage["userid"]
 
   constructor(
